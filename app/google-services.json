@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "788546448563",
+    "firebase_url": "https://receipe-demo-46104.firebaseio.com",
+    "project_id": "receipe-demo-46104",
+    "storage_bucket": "receipe-demo-46104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788546448563:android:a8daf1ed84c6a7d2",
+        "android_client_info": {
+          "package_name": "com.example.m10ga.myrecipejournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788546448563-833l221c95a3cgcak0pvfrv72v78nm1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe0nM_-MSqzdijEIRY8FG60AP4PiKauvA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
