@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Recipe_Entry"
+            android:label="@string/title_activity_recipe__entry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".URLEntry"></activity>
     </application>
 
 </manifest>
