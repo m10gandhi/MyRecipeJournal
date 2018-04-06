@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="40dp"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="RECIPE NAME *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+
+
+            <EditText
+                android:id="@+id/edt_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Name of the Recipe"
+                android:inputType="textPersonName"
+                android:padding="9sp" />
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="332dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:padding="9sp"
+                android:text="PICTURE"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:id="@+id/btn_photo"
+                android:layout_width="325dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:text="ADD A PHOTO OF RECIPE"
+                android:textColor="#000000"/>
+
+
+
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="CATEGORIES *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <CheckBox
+                    android:id="@+id/chk_appetizer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appetizer"
+                    android:buttonTint="@color/red"
+                    android:textColor="@color/red"
+                    />
+
+                <CheckBox
+                    android:id="@+id/chk_dessert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="98dp"
+                    android:buttonTint="@color/darkyellow"
+                    android:text="Dessert"
+                    android:textColor="@color/darkyellow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/chk_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Main Course"
+                    android:buttonTint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimary"
+                    />
+
+                <CheckBox
+                    android:id="@+id/chk_mex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mexican"
+                    android:buttonTint="@color/green"
+                    android:textColor="@color/green"
+                    android:layout_marginLeft="80dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/chk_side"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/orange"
+                    android:text="Side Dish"
+                    android:textColor="@color/orange" />
+
+                <CheckBox
+                    android:id="@+id/chk_veg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="101dp"
+                    android:buttonTint="@color/purple"
+                    android:text="Vegeterian"
+                    android:textColor="@color/purple" />
+
+            </LinearLayout>
+
+            <View style="@style/Divider"/>
+
+            <!--Seek Bar-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="PEOPLE SERVED *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:id="@+id/tv_seek"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Person"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"/>
+
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="12"/>
+
+            <View style="@style/Divider"/>
+
+            <!--Seek Bar-->
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="DIFFICULT *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:id="@+id/tv_diff"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Difficulty"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"/>
+
+            <SeekBar
+                android:id="@+id/seekbar1"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="12"/>
+
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="TIME *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                >
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preparation:"
+                    android:textAllCaps="true"
+                    android:layout_weight="3"
+                    android:id="@+id/tv_prepTime"/>
+                <EditText
+                    android:id="@+id/edt_prepTime"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:padding="9sp"
+                    android:hint="Set Time"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                >
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COOKING:"
+                    android:textAllCaps="true"
+                    android:layout_weight="3"
+                    android:id="@+id/tv_cookTime"/>
+                <EditText
+                    android:id="@+id/edt_cookTime"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:padding="9sp"
+                    android:hint="Set Time"
+                    android:layout_marginLeft="13dp"/>
+            </LinearLayout>
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="INGREDIENTS *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <EditText
+                    android:id="@+id/edt_ingredients"
+                    android:layout_width="288dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Add Ingredients"
+                    android:inputType="textPersonName"
+                    android:padding="9sp" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:id="@+id/add_item"
+                    android:background="@android:drawable/ic_input_add"/>
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+            <View style="@style/Divider"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="PREPARATION *"
+                android:textSize="18dp"
+                android:ems="10"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="8dp"
+                android:padding="9sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edt_preparation"
+                android:padding="9sp"
+                android:hint="Description of Recipe" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_submit"
+                android:text="SUBMIT"
+                android:background="#c0c5ff"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:layout_gravity="center_horizontal"
+                />
+
+
+
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>
