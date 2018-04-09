@@ -29,7 +29,6 @@ import java.util.ArrayList;
 
 import static android.bluetooth.BluetoothDevice.EXTRA_NAME;
 
-@SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     TabLayout tablayout;
     ViewPager viewPager;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     private FloatingActionButton Fab,Fab1,Fab2;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
     private MaterialSearchView searchView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 //        setSupportActionBar(toolbar);
 
         tablayout= findViewById(R.id.mytab);
-        viewPager= findViewById(R.id.view2);
+        viewPager= findViewById(R.id.viewpager);
         viewPager.setAdapter(new Myownpager(getSupportFragmentManager()));
         tablayout.setupWithViewPager(viewPager);
 
@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Fab1.setOnClickListener(this);
         Fab2.setOnClickListener(this);
 
-        searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        searchView.setVoiceSearch(false);
-        searchView.setCursorDrawable(R.drawable.custom_cursor);
-        searchView.setEllipsize(true);
-        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
+//        searchView = (MaterialSearchView) findViewById(R.id.search_view);
+//        searchView.setVoiceSearch(false);
+//        searchView.setCursorDrawable(R.drawable.custom_cursor);
+//        searchView.setEllipsize(true);
+//        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
 
         Fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,32 +116,32 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
 
-        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
-                        .show();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //Do some magic
-                return false;
-            }
-        });
-
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-                //Do some magic
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                //Do some magic
-            }
-        });
+        //        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+        //            @Override
+        //            public boolean onQueryTextSubmit(String query) {
+        //                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
+        //                        .show();
+        //                return false;
+        //            }
+        //
+        //            @Override
+        //            public boolean onQueryTextChange(String newText) {
+        //                //Do some magic
+        //                return false;
+        //            }
+        //        });
+        //
+        //        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+        //            @Override
+        //            public void onSearchViewShown() {
+        //                //Do some magic
+        //            }
+        //
+        //            @Override
+        //            public void onSearchViewClosed() {
+        //                //Do some magic
+        //            }
+        //        });
 
     }
 
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     class Myownpager extends FragmentPagerAdapter {
-        String data[]={"Recents","URL","MyReceipes"};
+        String data[]={"Recipes","URL"};
 
 
         public Myownpager(android.support.v4.app.FragmentManager fm) {
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
+//        searchView.setMenuItem(item);
         return true;
     }
 

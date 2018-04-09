@@ -49,7 +49,7 @@ public class Recipe_Entry extends AppCompatActivity {
     SeekBar seekbar, seekbar1;
     TextView tv_seek, tv_diff, tv_prepTime, tv_cookTime;
     EditText edt_recipe, edt_prepTime, edt_cookTime;
-    Button btn_photo,btn_submit;
+    Button  btn_submit,btn_photo;
     CheckBox chk_appetizer, chk_mex, chk_main, chk_side, chk_veg, chk_dessert;
     private int hr;
     private int min;
@@ -57,14 +57,16 @@ public class Recipe_Entry extends AppCompatActivity {
     ProgressDialog p;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("recipe");
-    String category, recipe, people, preparation, cooking;
+    String category, recipe_name, people, preparation, cooking;
     ImageView img;
-
-    StorageReference mStorageRef;
     private Uri filePath;
     private static final int PICK_IMAGE_REQUEST = 1234;
+    StorageReference mStorageRef;
+
+
     public static final String STORAGE_PATH = "image/";
     public static final String DATABASE_PATH = "image";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,35 +86,42 @@ public class Recipe_Entry extends AppCompatActivity {
         tv_seek = (TextView) findViewById(R.id.tv_seek);
         seekbar1 = (SeekBar) findViewById(R.id.seekbar1);
         tv_diff = (TextView) findViewById(R.id.tv_diff);
+//        btn_photo = (Button) findViewById(R.id.btn_photo);
+        btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_photo=(Button)findViewById(R.id.btn_photo);
-        btn_submit=(Button)findViewById(R.id.btn_submit);
-        img=(ImageView)findViewById(R.id.img);
-        chk_appetizer = (CheckBox) findViewById(R.id.chk_appetizer);
-        chk_mex = (CheckBox) findViewById(R.id.chk_mex);
-        chk_main = (CheckBox) findViewById(R.id.chk_main);
-        chk_side = (CheckBox) findViewById(R.id.chk_side);
-        chk_veg = (CheckBox) findViewById(R.id.chk_veg);
-        chk_dessert = (CheckBox) findViewById(R.id.chk_dessert);
+//        chk_appetizer = (CheckBox) findViewById(R.id.chk_appetizer);
+//        chk_mex = (CheckBox) findViewById(R.id.chk_mex);
+//        chk_main = (CheckBox) findViewById(R.id.chk_main);
+//        chk_side = (CheckBox) findViewById(R.id.chk_side);
+//        chk_veg = (CheckBox) findViewById(R.id.chk_veg);
+//        chk_dessert = (CheckBox) findViewById(R.id.chk_dessert);
+        img = (ImageView) findViewById(R.id.img);
+
 
         final Calendar c = Calendar.getInstance();
         hr = c.get(Calendar.HOUR_OF_DAY);
         min = c.get(Calendar.MINUTE);
 
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadFile();
+            }
+        });
+
         btn_photo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 showFileChooser();
             }
         });
-        btn_submit.setOnClickListener(new View.OnClickListener( ) {
-            @Override
-            public void onClick(View view) {
-                uploadFile();
-            }
 
-
-        });
+//        btn_photo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                uploadFile();
+//            }
+//        });
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -160,7 +169,7 @@ public class Recipe_Entry extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(Recipe_Entry.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        edt_prepTime.setText( selectedHour + ":" + selectedMinute);
+                        edt_prepTime.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -181,7 +190,7 @@ public class Recipe_Entry extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(Recipe_Entry.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        edt_prepTime.setText( selectedHour + ":" + selectedMinute);
+                        edt_cookTime.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -189,75 +198,6 @@ public class Recipe_Entry extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void uploadFile() {
-
-        if (filePath != null) {
-            StorageReference riverRef = mStorageRef.child("images").child(recipe + "" + "pic.jpg");
-            riverRef.putFile(filePath).addOnSuccessListener(new OnSuccessListener <UploadTask.TaskSnapshot>( ) {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri url = taskSnapshot.getMetadata().getDownloadUrl();
-                    onSubmit();
-
-                }
-            }).addOnFailureListener(new OnFailureListener( ) {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            }).addOnProgressListener(new OnProgressListener <UploadTask.TaskSnapshot>( ) {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-
-                }
-            });
-        }
-        else {}
-    }
-
-    private void onSubmit()
-    {
-        recipe=edt_recipe.getText().toString();
-        people=tv_seek.getText().toString();
-
-        myRef.child(recipe).addValueEventListener(new ValueEventListener( ) {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.getValue()==null)
-                {
-                    Map<String,String> map=new LinkedHashMap <>();
-                    map.put("recipe_name",recipe);
-                    map.put("people",people);
-
-
-                    myRef.child(recipe).setValue(map).addOnCompleteListener(new OnCompleteListener <Void>( ) {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(getApplicationContext(), "Successfully stored recipe", Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener( ) {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "add recipe again", Toast.LENGTH_LONG).show();
-
-                        }
-                    });
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
     }
 
     private void showFileChooser() {
@@ -283,6 +223,106 @@ public class Recipe_Entry extends AppCompatActivity {
     }
 
 
+    private void onSubmit() {
+        recipe_name = edt_recipe.getText().toString();
+        people = tv_seek.getText().toString();
+        preparation = edt_prepTime.getText().toString();
+        cooking = edt_cookTime.getText().toString();
+
+        myRef.child(recipe_name).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    Map<String, String> map = new LinkedHashMap<>();
+                    map.put("recipename", recipe_name);
+                    map.put("people_served", people);
+                    map.put("preparation_time", preparation);
+                    map.put("cooking_time", cooking);
+//                    map.put("url",url);
+
+                    myRef.child(recipe_name).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+//                                    p.dismiss();
+                            Toast.makeText(getApplicationContext(), "Successfully stored recipe", Toast.LENGTH_LONG).show();
+//                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                            startActivity(i);
+//                            p.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            p.dismiss();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void uploadFile() {
+        //if there is a file to upload
+        if (filePath != null) {
+            //displaying a progress dialog while upload is going on
+//            final ProgressDialog progressDialog = new ProgressDialog(this);
+//            progressDialog.setTitle("Uploading");
+//            progressDialog.setCancelable(false);
+//            progressDialog.show();
+//            Random r = new Random();
+
+
+            StorageReference riversRef = mStorageRef.child("images").child(recipe_name + "" + "pic.jpg");
+            riversRef.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            //if the upload is successfull
+                            //hiding the progress dialog
+                            // progressDialog.dismiss();
+
+//                           Toast.makeText(getApplicationContext(),"Done Uploading",Toast.LENGTH_LONG).show();
+                            //and displaying a success toast
+                            Uri url = taskSnapshot.getMetadata().getDownloadUrl();
+                            onSubmit();
+
+
+//                            Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            //if the upload is not successfull
+                            //hiding the progress dialog
+//                            progressDialog.dismiss();
+
+                            //and displaying error message
+                            Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            //calculating progress percentage
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+
+                            //displaying percentage in progress dialog
+//                            progressDialog.setMessage("Uploaded " + ((int) progress) + "%...");
+                        }
+                    });
+        }
+        //if there is not any file
+        else {
+            //you can display an error toast
+        }
+
+    }
 }
 
 
