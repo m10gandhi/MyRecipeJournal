@@ -13,10 +13,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.view.MenuItem;
+
 
 import com.example.m10ga.myrecipejournal.Model.ListItem;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -62,6 +66,7 @@ public class Recent extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
@@ -85,6 +90,7 @@ public class Recent extends Fragment {
 
         return v;
     }
+
 
     @Override
     public void onStart()
@@ -208,4 +214,6 @@ public class Recent extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

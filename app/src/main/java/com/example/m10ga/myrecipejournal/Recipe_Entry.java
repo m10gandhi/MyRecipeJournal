@@ -318,8 +318,11 @@ public class Recipe_Entry extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 //                                    p.dismiss();
                             Toast.makeText(getApplicationContext(), "Successfully stored recipe", Toast.LENGTH_LONG).show();
-//                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+
+// Intent i = new Intent(getApplicationContext(), MainActivity.class);
 //                            startActivity(i);
+
+
 //                            p.dismiss();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -336,6 +339,9 @@ public class Recipe_Entry extends AppCompatActivity {
 
             }
         });
+
+        Intent in=new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(in);
     }
 
 }
