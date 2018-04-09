@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -106,6 +107,8 @@ public class Recipe_Entry extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadFile();
+                onSubmit();
+                Log.e("name", "onClick: uploadcall" );
             }
         });
 
@@ -223,47 +226,6 @@ public class Recipe_Entry extends AppCompatActivity {
     }
 
 
-    private void onSubmit() {
-        recipe_name = edt_recipe.getText().toString();
-        people = tv_seek.getText().toString();
-        preparation = edt_prepTime.getText().toString();
-        cooking = edt_cookTime.getText().toString();
-
-        myRef.child(recipe_name).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
-                    Map<String, String> map = new LinkedHashMap<>();
-                    map.put("recipename", recipe_name);
-                    map.put("people_served", people);
-                    map.put("preparation_time", preparation);
-                    map.put("cooking_time", cooking);
-//                    map.put("url",url);
-
-                    myRef.child(recipe_name).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-//                                    p.dismiss();
-                            Toast.makeText(getApplicationContext(), "Successfully stored recipe", Toast.LENGTH_LONG).show();
-//                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                            startActivity(i);
-//                            p.dismiss();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            p.dismiss();
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 
     private void uploadFile() {
@@ -290,6 +252,8 @@ public class Recipe_Entry extends AppCompatActivity {
                             //and displaying a success toast
                             Uri url = taskSnapshot.getMetadata().getDownloadUrl();
                             onSubmit();
+
+                            Log.e("name", "onClick: storage call" );
 
 
 //                            Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
@@ -323,6 +287,50 @@ public class Recipe_Entry extends AppCompatActivity {
         }
 
     }
+    private void onSubmit() {
+        recipe_name = edt_recipe.getText().toString();
+        people = tv_seek.getText().toString();
+        preparation = edt_prepTime.getText().toString();
+        cooking = edt_cookTime.getText().toString();
+        Log.e("name", "onSubmit: "+recipe_name+"people" +people);
+
+
+        myRef.child(recipe_name).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    Map<String, String> map = new LinkedHashMap<>();
+                    map.put("recipe_name", recipe_name);
+                    map.put("people", people);
+                    map.put("preparation_time", preparation);
+                    map.put("cooking_time", cooking);
+//                    map.put("url",url);
+
+                    myRef.child(recipe_name).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+//                                    p.dismiss();
+                            Toast.makeText(getApplicationContext(), "Successfully stored recipe", Toast.LENGTH_LONG).show();
+//                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                            startActivity(i);
+//                            p.dismiss();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            p.dismiss();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }
 
 

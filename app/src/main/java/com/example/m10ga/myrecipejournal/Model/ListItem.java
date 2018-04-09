@@ -7,28 +7,42 @@ package com.example.m10ga.myrecipejournal.Model;
 public class ListItem {
 
     private String url;
-    private String cooking_time ;
-    private String recipename;
+    private String recipe_name;
     private String preparation_time;
-    private String people_served;
+    private String cooking_time;
+
+
+    public String getRecipe_name() {
+        return recipe_name;
+    }
+
+    public void setRecipe_name(String recipe_name) {
+        this.recipe_name = recipe_name;
+    }
+
+    public String getPeople() {
+        return people;
+    }
+
+    public void setPeople(String people) {
+        this.people = people;
+    }
+
+    private String people;
 
     public ListItem(){}
     public ListItem(String url, String cooking_time, String recipename, String preparation_time, String people_served){
         this.url = url;
         this.cooking_time = cooking_time;
-        this.recipename = recipename;
+//        this.recipename = recipename;
         this.preparation_time = preparation_time;
-        this.people_served = people_served;
+//        this.people_served = people_served;
 
     }
 
-    public String getPeople_served() {
-        return people_served;
-    }
 
-    public void setPeople_served(String people_served) {
-        this.people_served = people_served;
-    }
+
+
 
     public String getUrl(){return url;}
     public void setUrl(String url){this.url=url;}
@@ -41,13 +55,8 @@ public class ListItem {
         this.cooking_time = cooking_time;
     }
 
-    public String getRecipename() {
-        return recipename;
-    }
 
-    public void setRecipename(String recipename) {
-        this.recipename = recipename;
-    }
+
 
     public String getPreparation_time() {
         return preparation_time;

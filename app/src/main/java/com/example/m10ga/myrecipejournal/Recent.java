@@ -94,9 +94,9 @@ public class Recent extends Fragment {
 
                     @Override
                     protected void populateViewHolder(BlogViewHolder viewHolder, ListItem model, int position) {
-                        Log.e("data",""+myRef+""+model.getRecipename());
-                        viewHolder.setRecipe_name(model.getRecipename());
-                        viewHolder.setPeople(model.getPeople_served());
+                        Log.e("data",""+myRef+""+model.getRecipe_name()+"cooking time"+model.getCooking_time()+""+" prepareation_time"+model.getPreparation_time());
+                        viewHolder.setRecipe_name(model.getRecipe_name());
+                        viewHolder.setPeople(model.getPeople());
                     }
 
 

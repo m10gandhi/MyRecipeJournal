@@ -40,8 +40,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     {
         final ListItem listItem=listItems.get(position);
 
-        holder.tv_recipe.setText(listItem.getRecipename());
-        holder.tv_people.setText(listItem.getPeople_served());
+        holder.tv_recipe.setText(listItem.getRecipe_name());
+        holder.tv_people.setText(listItem.getPeople());
         holder.tv_url.setText(listItem.getUrl());
 
 
