@@ -250,35 +250,24 @@
                 android:textColor="#000000"
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="6">
 
-                <EditText
+            <EditText
                     android:id="@+id/edt_ingredients"
-                    android:layout_width="288dp"
-                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
                     android:hint="Add Ingredients"
-                    android:inputType="textPersonName"
-                    android:padding="9sp" />
+                    android:inputType="textMultiLine"
+                    android:padding="9sp"
+                android:lines="10"
+                android:maxLines="3"
+                android:minLines="3"
+                android:scrollbars="vertical"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:id="@+id/add_item"
-                    android:background="@android:drawable/ic_input_add"/>
-            </LinearLayout>
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-            </ListView>
+
 
             <View style="@style/Divider"/>
 
@@ -298,12 +287,16 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:inputType="textPersonName"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/edt_preparation"
                 android:padding="9sp"
-                android:hint="Description of Recipe" />
+                android:hint="Description of Recipe"
+                android:lines="10"
+                android:maxLines="3"
+                android:minLines="3"
+                android:scrollbars="vertical"/>
 
 
             <Button

@@ -5,6 +5,7 @@ package com.example.m10ga.myrecipejournal;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.m10ga.myrecipejournal.Model.ListItem;
@@ -90,13 +92,42 @@ public class Recent extends Fragment {
         super.onStart();
 
         FirebaseRecyclerAdapter<ListItem,BlogViewHolder> firebaseRecyclerAdapter=new
-                FirebaseRecyclerAdapter<ListItem, BlogViewHolder>(ListItem.class,R.layout.row_layout,BlogViewHolder.class,myRef) {
+                FirebaseRecyclerAdapter<ListItem, BlogViewHolder>(ListItem.class,R.layout.row_layout,BlogViewHolder.class,myRef)
+                {
 
                     @Override
-                    protected void populateViewHolder(BlogViewHolder viewHolder, ListItem model, int position) {
+                    protected void populateViewHolder(BlogViewHolder viewHolder, final ListItem model, int position)
+                    {
                         Log.e("data",""+myRef+""+model.getRecipe_name()+"cooking time"+model.getCooking_time()+""+" prepareation_time"+model.getPreparation_time());
                         viewHolder.setRecipe_name(model.getRecipe_name());
                         viewHolder.setPeople(model.getPeople());
+
+                        viewHolder.setOnClickListener(new BlogViewHolder.ClickListener()
+                        {
+                            @Override
+                            public void onItemClick(View view, int position)
+                            {
+                                String value="Hello world";
+                                Intent i = new Intent(getActivity(),DetailsActivity.class);
+                                i.putExtra("key",model.getCooking_time());
+                                i.putExtra("recipename",model.getRecipe_name());
+                                i.putExtra("person",model.getPeople());
+                                i.putExtra("ingredients",model.getIngredients());
+                                i.putExtra("preparation",model.getPreparation_steps());
+                                i.putExtra("preparationtime",model.getPreparation_time());
+                                startActivity(i);
+
+                            }
+
+                            @Override
+                            public void onItemLongClick(View view, int position) {
+                                myRef.child(model.getRecipe_name()).removeValue();
+
+                            }
+                        });
+
+
+
                     }
 
 
@@ -110,10 +141,36 @@ public class Recent extends Fragment {
     public static class BlogViewHolder extends RecyclerView.ViewHolder
     {
         View mView;
+        ImageButton mImageButton;
+        private BlogViewHolder.ClickListener mClickListener;
+
+        //Interface to send callbacks...
+        public interface ClickListener{
+            public void onItemClick(View view, int position);
+            public void onItemLongClick(View view, int position);
+        }
+        public void setOnClickListener(BlogViewHolder.ClickListener clickListener){
+            mClickListener = clickListener;
+        }
+
         public BlogViewHolder(View itemView)
         {
             super(itemView);
             mView=itemView;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickListener.onItemClick(v, getAdapterPosition());
+
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mClickListener.onItemLongClick(v, getAdapterPosition());
+                    return true;
+                }
+            });
         }
 
         public void setRecipe_name(String recipe_name)

@@ -10,6 +10,8 @@ public class ListItem {
     private String recipe_name;
     private String preparation_time;
     private String cooking_time;
+    private String ingredients;
+    private String preparation_steps;
 
 
     public String getRecipe_name() {
@@ -65,4 +67,11 @@ public class ListItem {
     public void setPreparation_time(String preparation_time) {
         this.preparation_time = preparation_time;
     }
+
+    public String getIngredients(){return ingredients;}
+    public void setIngredients(String ingredients){this.ingredients=ingredients;}
+
+    public String getPreparation_steps(){return preparation_steps;}
+    public void setPreparation_steps(String preparation_steps){this.preparation_steps=preparation_steps;}
+
 }

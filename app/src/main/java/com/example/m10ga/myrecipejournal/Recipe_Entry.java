@@ -49,7 +49,7 @@ import java.util.Map;
 public class Recipe_Entry extends AppCompatActivity {
     SeekBar seekbar, seekbar1;
     TextView tv_seek, tv_diff, tv_prepTime, tv_cookTime;
-    EditText edt_recipe, edt_prepTime, edt_cookTime;
+    EditText edt_recipe, edt_prepTime, edt_cookTime,edt_preparation,edt_ingredients;
     Button  btn_submit,btn_photo;
     CheckBox chk_appetizer, chk_mex, chk_main, chk_side, chk_veg, chk_dessert;
     private int hr;
@@ -58,7 +58,7 @@ public class Recipe_Entry extends AppCompatActivity {
     ProgressDialog p;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("recipe");
-    String category, recipe_name, people, preparation, cooking;
+    String category, recipe_name, people, preparation, cooking,ingredients,preparation_steps;
     ImageView img;
     private Uri filePath;
     private static final int PICK_IMAGE_REQUEST = 1234;
@@ -81,6 +81,8 @@ public class Recipe_Entry extends AppCompatActivity {
         edt_recipe = (EditText) findViewById(R.id.edt_recipe);
         edt_cookTime = (EditText) findViewById(R.id.edt_cookTime);
         edt_prepTime = (EditText) findViewById(R.id.edt_prepTime);
+        edt_ingredients=(EditText)findViewById(R.id.edt_ingredients);
+        edt_preparation=(EditText)findViewById(R.id.edt_preparation);
         tv_prepTime = (TextView) findViewById(R.id.tv_prepTime);
         tv_cookTime = (TextView) findViewById(R.id.tv_cookTime);
         seekbar = (SeekBar) findViewById(R.id.seekbar);
@@ -292,6 +294,8 @@ public class Recipe_Entry extends AppCompatActivity {
         people = tv_seek.getText().toString();
         preparation = edt_prepTime.getText().toString();
         cooking = edt_cookTime.getText().toString();
+        ingredients=edt_ingredients.getText().toString();
+        preparation_steps=edt_preparation.getText().toString();
         Log.e("name", "onSubmit: "+recipe_name+"people" +people);
 
 
@@ -304,6 +308,9 @@ public class Recipe_Entry extends AppCompatActivity {
                     map.put("people", people);
                     map.put("preparation_time", preparation);
                     map.put("cooking_time", cooking);
+                    map.put("ingredients",ingredients);
+                    map.put("preparation_steps",preparation_steps);
+
 //                    map.put("url",url);
 
                     myRef.child(recipe_name).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
