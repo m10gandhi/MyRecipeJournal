@@ -13,6 +13,9 @@ public class ListItem {
     private String cooking_time;
     private String ingredients;
     private String preparation_steps;
+    private String rating;
+    private String rating_url;
+    private String people_url;
 
 
     public String getRecipe_name() {
@@ -41,16 +44,23 @@ public class ListItem {
     public String getUrl(){return url;}
     public void setUrl(String url){this.url=url;}
 
+    public void setPeople_url(String people_url) {this.people_url = people_url;}
+    public String getPeople_url() {return people_url;}
+
+    public void setRating_url(String rating_url) {this.rating_url = rating_url;}
+    public String getRating_url() {return rating_url;}
+
     private String people;
 
     public ListItem(){}
-    public ListItem(String url, String cooking_time, String recipename, String preparation_time, String people_served, String url_recipe){
+    public ListItem(String url, String cooking_time, String recipename, String preparation_time, String people_served, String url_recipe,String rating){
         this.url = url;
         this.url_recipe = url_recipe;
         this.cooking_time = cooking_time;
 //        this.recipename = recipename;
         this.preparation_time = preparation_time;
 //        this.people_served = people_served;
+        this.rating=rating;
 
     }
 
@@ -84,5 +94,8 @@ public class ListItem {
 
     public String getPreparation_steps(){return preparation_steps;}
     public void setPreparation_steps(String preparation_steps){this.preparation_steps=preparation_steps;}
+
+    public String getRating(){return rating;}
+    public void setRating(String rating){this.rating=rating;}
 
 }

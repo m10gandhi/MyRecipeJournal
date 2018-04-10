@@ -48,7 +48,7 @@ import java.util.Map;
 
 public class Recipe_Entry extends AppCompatActivity {
     SeekBar seekbar, seekbar1;
-    TextView tv_seek, tv_diff, tv_prepTime, tv_cookTime;
+    TextView tv_seek, tv_rating, tv_prepTime, tv_cookTime;
     EditText edt_recipe, edt_prepTime, edt_cookTime,edt_preparation,edt_ingredients;
     Button  btn_submit,btn_photo;
     CheckBox chk_appetizer, chk_mex, chk_main, chk_side, chk_veg, chk_dessert;
@@ -58,7 +58,7 @@ public class Recipe_Entry extends AppCompatActivity {
     ProgressDialog p;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("recipe");
-    String category, recipe_name, people, preparation, cooking,ingredients,preparation_steps;
+    String category, recipe_name, people, preparation, cooking,ingredients,preparation_steps,rating;
     ImageView img;
     private Uri filePath;
     private static final int PICK_IMAGE_REQUEST = 1234;
@@ -87,8 +87,8 @@ public class Recipe_Entry extends AppCompatActivity {
         tv_cookTime = (TextView) findViewById(R.id.tv_cookTime);
         seekbar = (SeekBar) findViewById(R.id.seekbar);
         tv_seek = (TextView) findViewById(R.id.tv_seek);
-       // seekbar1 = (SeekBar) findViewById(R.id.seekbar1);
-       // tv_diff = (TextView) findViewById(R.id.tv_diff);
+        seekbar1 = (SeekBar) findViewById(R.id.seekbar1);
+        tv_rating = (TextView) findViewById(R.id.tv_rating);
 //        btn_photo = (Button) findViewById(R.id.btn_photo);
         btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_photo=(Button)findViewById(R.id.btn_photo);
@@ -145,22 +145,23 @@ public class Recipe_Entry extends AppCompatActivity {
             }
         });
 
- //       seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-  //          @Override
-   //         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//
-  //          }
+        seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tv_rating.setText(String.valueOf(progress));
 
-    //        @Override
-      //      public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-        //    }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
 
-          //  @Override
-           // public void onStopTrackingTouch(SeekBar seekBar) {
+            }
 
-         //   }
-       // });
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         edt_prepTime.setOnClickListener(new View.OnClickListener() {
 
@@ -296,6 +297,7 @@ public class Recipe_Entry extends AppCompatActivity {
         cooking = edt_cookTime.getText().toString();
         ingredients=edt_ingredients.getText().toString();
         preparation_steps=edt_preparation.getText().toString();
+        rating=tv_rating.getText().toString();
         Log.e("name", "onSubmit: "+recipe_name+"people" +people);
 
 
@@ -310,6 +312,7 @@ public class Recipe_Entry extends AppCompatActivity {
                     map.put("cooking_time", cooking);
                     map.put("ingredients",ingredients);
                     map.put("preparation_steps",preparation_steps);
+                    map.put("rating",rating);
 
 //                    map.put("url",url);
 

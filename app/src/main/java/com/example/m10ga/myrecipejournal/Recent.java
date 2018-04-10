@@ -39,7 +39,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Recent extends Fragment {
     private RecyclerView recyclerView;
-    ImageView img;
+
+    ImageButton img;
     //    private RecyclerView.Adapter adapter;
 //    private List<ListItem>listItems;
     FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -85,9 +86,13 @@ public class Recent extends Fragment {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_recent, container, false);
         recyclerView=(RecyclerView)v.findViewById(R.id.recyclerview);
+      //  img=(ImageButton)v.findViewById(R.id.img);
         myRef.keepSynced(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
         return v;
     }
 
@@ -107,6 +112,7 @@ public class Recent extends Fragment {
                         Log.e("data",""+myRef+""+model.getRecipe_name()+"cooking time"+model.getCooking_time()+""+" prepareation_time"+model.getPreparation_time());
                         viewHolder.setRecipe_name(model.getRecipe_name());
                         viewHolder.setPeople(model.getPeople());
+                        viewHolder.setRate(model.getRating());
                        // viewHolder.setOnCreateContextMenuListener(this);
 
                         viewHolder.setOnClickListener(new BlogViewHolder.ClickListener() {
@@ -188,6 +194,11 @@ public class Recent extends Fragment {
         {
             TextView tv_people=(TextView)mView.findViewById(R.id.tv_people);
             tv_people.setText(people);
+        }
+        public void setRate(String rate)
+        {
+            TextView tv_rating=(TextView)mView.findViewById(R.id.tv_rating);
+            tv_rating.setText(rate);
         }
 
         public void setDelBtn(final String postDel){

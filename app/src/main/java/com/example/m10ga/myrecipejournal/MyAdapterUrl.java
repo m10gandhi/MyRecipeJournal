@@ -40,6 +40,8 @@ public class MyAdapterUrl extends RecyclerView.Adapter <MyAdapterUrl.ViewHolder>
        // TextView tv_recipe;
        // TextView tv_people;
          TextView tv_url;
+        TextView tv_people_url;
+        TextView tv_rating_url;
         TextView tv_url_recipe;
 
 
@@ -50,6 +52,8 @@ public class MyAdapterUrl extends RecyclerView.Adapter <MyAdapterUrl.ViewHolder>
 
         //    tv_recipe=(TextView)itemView.findViewById(R.id.tv_recipe);
           //  tv_people=(TextView)itemView.findViewById(R.id.tv_people);
+            tv_people_url=(TextView)itemView.findViewById(R.id.tv_people_url);
+            tv_rating_url=(TextView)itemView.findViewById(R.id.tv_rating_url);
                tv_url=(TextView)itemView.findViewById(R.id.tv_url);
                tv_url_recipe=(TextView)itemView.findViewById(R.id.tv_url_recipe);
 
@@ -71,6 +75,8 @@ public class MyAdapterUrl extends RecyclerView.Adapter <MyAdapterUrl.ViewHolder>
       //  holder.tv_people.setText(listItem.getPeople());
           holder.tv_url.setText(listItem.getUrl());
          holder.tv_url_recipe.setText(listItem.getUrl_recipe());
+        holder.tv_people_url.setText(listItem.getPeople());
+        holder.tv_rating_url.setText(listItem.getRating());
 
 
     }

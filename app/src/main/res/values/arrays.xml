@@ -1,46 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="query_suggestions">
-        <item>A very very long suggestion that would span multiple lines.</item>
-        <item>Android</item>
-        <item>iOS</item>
-        <item>SCALA</item>
-        <item>Ruby</item>
-        <item>JavaScript</item>
-        <item>C#</item>
-        <item>Python</item>
-        <item>C</item>
-        <item>C++</item>
-        <item>PHP</item>
-        <item>Go</item>
-        <item>Perl</item>
-        <item>Bash</item>
-        <item>Lua</item>
-        <item>R</item>
-        <item>TCL</item>
-        <item>Haskell</item>
-        <item>Objective C</item>
-        <item>Swift</item>
-        <item>Kotlin</item>
-        <item>jQuery</item>
-        <item>Development</item>
-        <item>Web</item>
-        <item>Ajax</item>
-        <item>Test</item>
-        <item>Testing</item>
-        <item>CookBook</item>
-        <item>Beagle</item>
-        <item>VMware</item>
-        <item>Less.js</item>
-        <item>IDE</item>
-        <item>Arduino</item>
-        <item>Xamarin</item>
-        <item>UI</item>
-        <item>Microsoft</item>
-        <item>Application</item>
-        <item>Development</item>
-        <item>JUnit</item>
-        <item>SQL</item>
-        <item>Beagle</item>
+        <item>Pizza</item>
+        <item>Burger</item>
+        <item>Hot Dog</item>
+        <item>Taco</item>
+        <item>Pasta</item>
+        <item>Macroni</item>
+        <item>Noodles</item>
+        <item>Biryani</item>
+        <item>Indian Curry</item>
+        <item>French Fries</item>
+        <item>Apple Pie</item>
+        <item>Sandwich</item>
+        <item>Barbeque</item>
+        <item>Donuts</item>
+        <item>Pan-cake</item>
+        <item>Cake</item>
+        <item>Rice</item>
+        <item>Indian bread</item>
+        <item>Indian Curry</item>
+        <item>Cheese Burger</item>
+        <item>Cheese Hot Dog</item>
+        <item>Tomato</item>
+        <item>Potato</item>
+        <item>Cucumber</item>
+        <item>Carrot</item>
+        <item>Beat</item>
+        <item>Green Beans</item>
+        <item>Cheese</item>
+        <item>Hamburger</item>
+        <item>Bun</item>
+        <item>Paneer</item>
+        <item>Ice-cream</item>
+        <item>Basundi</item>
+        <item>Roti</item>
+        <item>Gulaab Jamun</item>
+        <item>anipuri</item>
+        <item>Dosa</item>
+        <item>Korma</item>
+        <item>Paneer curry</item>
+        <item>Naan</item>
+        <item>Utthapa</item>
+        <item>Omlet</item>
+        <item>Curd</item>
+        <item>Milk</item>
+        <item>Ravioli</item>
+        <item>Fudge</item>
+        <item>Brownie</item>
+        <item>Mocha cake</item>
+        <item>Milkshake</item>
+        <item>Manchurian</item>
+        <item>Malpua</item>
+        <item>Schezwan Rice</item>
+        <item>Choclate</item>
+        <item>Vanilla</item>
+        <item>Strawberry</item>
+        <item>Egg potato curry</item>
+        <item>Cookies</item>
+        <item>Chili</item>
+        <item>Capsicum</item>
+        <item>Water</item>
+        <item>Butter</item>
+        <item>Chili powder</item>
+        <item>Turmeric powder</item>
+        <item>Pudding</item>
+        <item>Soup</item>
+        <item>Biscuit</item>
+        <item>https://www.youtube.com/watch?v=cxB4ACaaR4I</item>
+        <item>https://www.youtube.com/watch?v=B97ExMoJ5JE</item>
+        <item>https://www.youtube.com/watch?v=b7Z6i9V65BU</item>
+        <item>https://www.youtube.com/watch?v=1gO7qoAVMlk</item>
+        <item>https://www.youtube.com/watch?v=bc7Rw71JXLU</item>
+        <item>https://www.youtube.com/watch?v=yeQDKi97GUA</item>
+        <item>https://www.youtube.com/watch?v=wk0eHJiFuus</item>
+        <item>https://www.youtube.com/watch?v=ei-ssNy1DwM</item>
+        <item>https://www.youtube.com/watch?v=4tUI1v6c5Ig</item>
+        <item>https://www.youtube.com/watch?v=neNYQN_EiYs</item>
+        <item>https://www.youtube.com/watch?v=neNYQN_EiYs</item>
+        <item>https://www.youtube.com/watch?v=sgD6b2vEV-E</item>
+        <item>https://www.youtube.com/watch?v=D1wAl7g5tvk</item>
+        <item>https://www.youtube.com/watch?v=dDQy0xAwWl8</item>
+        <item>Banana</item>
     </string-array>
 </resources>

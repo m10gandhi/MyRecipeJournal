@@ -128,10 +128,10 @@
             <!--Seek Bar-->
 
 
-        <!--    <TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="DIFFICULT *"
+                android:text="RATING *"
                 android:textSize="18dp"
                 android:ems="10"
                 android:layout_marginLeft="5dp"
@@ -147,12 +147,12 @@
                 android:textColor="@color/darkgrey"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:id="@+id/tv_diff"/>
+                android:id="@+id/tv_rating"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="Difficulty"
+                android:text="Rating"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/darkgrey"
@@ -163,10 +163,12 @@
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="12"/>
+                android:max="10"/>
 
 
-            <View style="@style/Divider"/> -->
+
+
+            <View style="@style/Divider"/>
 
             <TextView
                 android:layout_width="match_parent"

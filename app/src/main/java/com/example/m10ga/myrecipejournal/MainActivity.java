@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Fab1.setOnClickListener(this);
         Fab2.setOnClickListener(this);
 
-//        searchView = (MaterialSearchView) findViewById(R.id.search_view);
-//        searchView.setVoiceSearch(false);
-//        searchView.setCursorDrawable(R.drawable.custom_cursor);
-//        searchView.setEllipsize(true);
-//        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setVoiceSearch(false);
+        searchView.setCursorDrawable(R.drawable.custom_cursor);
+        searchView.setEllipsize(true);
+        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
 
         Fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,32 +116,32 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
 
-        //        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-        //            @Override
-        //            public boolean onQueryTextSubmit(String query) {
-        //                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
-        //                        .show();
-        //                return false;
-        //            }
-        //
-        //            @Override
-        //            public boolean onQueryTextChange(String newText) {
-        //                //Do some magic
-        //                return false;
-        //            }
-        //        });
-        //
-        //        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-        //            @Override
-        //            public void onSearchViewShown() {
-        //                //Do some magic
-        //            }
-        //
-        //            @Override
-        //            public void onSearchViewClosed() {
-        //                //Do some magic
-        //            }
-        //        });
+                searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
+                                .show();
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        //Do some magic
+                        return false;
+                    }
+                });
+
+                searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+                    @Override
+                    public void onSearchViewShown() {
+                        //Do some magic
+                    }
+
+                    @Override
+                    public void onSearchViewClosed() {
+                        //Do some magic
+                    }
+                });
 
     }
 
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem item = menu.findItem(R.id.action_search);
-//        searchView.setMenuItem(item);
+        searchView.setMenuItem(item);
         return true;
     }
 

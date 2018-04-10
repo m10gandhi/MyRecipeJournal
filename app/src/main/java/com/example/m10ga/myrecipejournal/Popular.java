@@ -100,13 +100,18 @@ public class Popular extends Fragment
                      viewHolder.setUrl(model.getUrl());
                     viewHolder.setUrl_recipe(model.getUrl_recipe());
 
+                     viewHolder.setPeople_url(model.getPeople_url());
+                     viewHolder.setRate_url(model.getRating_url());
+
                      viewHolder.setOnClickListener(new BlogViewHolder.ClickListener() {
                          @Override
                          public void onItemClick(View view, int position) {
                              String value = "Hello User";
                              Intent il=new Intent(getActivity(),DetailUrlActivity.class);
                              il.putExtra("url",model.getUrl());
-                             il.putExtra("urlname",model.getUrl_recipe());
+                             il.putExtra("url_recipe",model.getUrl_recipe());
+                             il.putExtra("people_url",model.getPeople_url());
+                             il.putExtra("rating_url",model.getRating_url());
                              startActivity(il);
                          }
 
@@ -169,12 +174,21 @@ public class Popular extends Fragment
             TextView tv_url=(TextView)mView.findViewById(R.id.tv_url);
             tv_url.setText(url);
         }
-        public void setUrl_recipe(String url_name)
+        public void setUrl_recipe(String url_recipe)
         {
             TextView tv_url_recipe=(TextView)mView.findViewById(R.id.tv_url_recipe);
-            tv_url_recipe.setText(url_name);
+            tv_url_recipe.setText(url_recipe);
         }
-
+        public void setPeople_url(String people)
+        {
+            TextView tv_people_url=(TextView)mView.findViewById(R.id.tv_people_url);
+            tv_people_url.setText(people);
+        }
+        public void setRate_url(String rate)
+        {
+            TextView tv_rating_url=(TextView)mView.findViewById(R.id.tv_rating_url);
+            tv_rating_url.setText(rate);
+        }
 
 
     }

@@ -22,6 +22,8 @@ public class DetailUrlActivity extends AppCompatActivity {
     DatabaseReference myRef=database.getReference().child("url");
     TextView tv_url_recipe;
     TextView tv_url;
+    TextView tv_person_url;
+    TextView tv_rating_url;
     // ImageButton ib;
     //EditText ed;
 
@@ -32,13 +34,18 @@ public class DetailUrlActivity extends AppCompatActivity {
 
         tv_url_recipe=(TextView)findViewById(R.id.tv_url_recipe);
         tv_url=(TextView)findViewById(R.id.tv_url);
+        tv_person_url=(TextView)findViewById(R.id.tv_person_url);
+        tv_rating_url=(TextView)findViewById(R.id.tv_rating_url);
 
-        String recipe_name=getIntent().getStringExtra("recipename");
+        String url_recipe=getIntent().getStringExtra("url_recipe");
         String Link=getIntent().getStringExtra("url");
+        String person_url=getIntent().getStringExtra("people_url");
+        String rating_url=getIntent().getStringExtra("rating_url");
 
-
-        tv_url_recipe.setText(recipe_name);
+        tv_rating_url.setText(rating_url);
+        tv_url_recipe.setText(url_recipe);
         tv_url.setText(Link);
+        tv_person_url.setText(person_url);
         //   ib = (ImageButton)findViewById(R.id.imageButton);
         //  ed = (EditText)findViewById(R.id.update1);
 
