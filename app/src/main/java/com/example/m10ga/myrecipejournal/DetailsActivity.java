@@ -27,8 +27,8 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tv_ingredients;
     TextView tv_prepartion;
     TextView tv_preparationtime;
-    ImageButton ib;
-    EditText ed;
+   // ImageButton ib;
+    //EditText ed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +55,17 @@ public class DetailsActivity extends AppCompatActivity {
         tv_ingredients.setText(ingredients);
         tv_prepartion.setText(preparation);
         tv_preparationtime.setText(preparationtime+" "+"minutes");
-        ib = (ImageButton)findViewById(R.id.imageButton);
-        ed = (EditText)findViewById(R.id.update1);
+     //   ib = (ImageButton)findViewById(R.id.imageButton);
+      //  ed = (EditText)findViewById(R.id.update1);
 
-        ed.setVisibility(View.GONE);
+//        ed.setVisibility(View.GONE);
 
-        ib.setOnClickListener(new View.OnClickListener( ) {
-            @Override
-            public void onClick(View view) {
-                ed.setVisibility(View.VISIBLE);
-            }
-        });
+  //      ib.setOnClickListener(new View.OnClickListener( ) {
+    //       @Override
+      //      public void onClick(View view) {
+        //        ed.setVisibility(View.VISIBLE);
+      //      }
+       // });
     }
 
 

@@ -87,8 +87,8 @@ public class Recipe_Entry extends AppCompatActivity {
         tv_cookTime = (TextView) findViewById(R.id.tv_cookTime);
         seekbar = (SeekBar) findViewById(R.id.seekbar);
         tv_seek = (TextView) findViewById(R.id.tv_seek);
-        seekbar1 = (SeekBar) findViewById(R.id.seekbar1);
-        tv_diff = (TextView) findViewById(R.id.tv_diff);
+       // seekbar1 = (SeekBar) findViewById(R.id.seekbar1);
+       // tv_diff = (TextView) findViewById(R.id.tv_diff);
 //        btn_photo = (Button) findViewById(R.id.btn_photo);
         btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_photo=(Button)findViewById(R.id.btn_photo);

@@ -81,7 +81,9 @@ public class Popular extends Fragment
                 new FirebaseRecyclerAdapter<ListItem, BlogViewHolder>(ListItem.class,R.layout.row_layout,BlogViewHolder.class,myRef) {
                     @Override
                     protected void populateViewHolder(BlogViewHolder viewHolder, ListItem model, int position) {
+
                         viewHolder.setUrl(model.getUrl());
+                      //  viewHolder.setUrl(model.getUrl_recipe());
                     }
                 };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -102,6 +104,12 @@ public class Popular extends Fragment
             TextView tv_url=(TextView)mView.findViewById(R.id.tv_url);
             tv_url.setText(url);
         }
+
+    //    public void setUrl_recipe(String url_recipe)
+     //   {
+     //       TextView tv_url2=(TextView)mView.findViewById(R.id.tv_url_recipe);
+     //       tv_url2.setText(url_recipe);
+     //   }
     }
 
 

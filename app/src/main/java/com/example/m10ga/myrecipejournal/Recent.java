@@ -4,6 +4,7 @@ package com.example.m10ga.myrecipejournal;
  * Created by m10ga on 2018-04-04.
  */
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,13 +12,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MenuItem;
 
@@ -29,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Recent extends Fragment {
     private RecyclerView recyclerView;
+    ImageView img;
     //    private RecyclerView.Adapter adapter;
 //    private List<ListItem>listItems;
     FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -97,58 +104,65 @@ public class Recent extends Fragment {
     {
         super.onStart();
 
-        FirebaseRecyclerAdapter<ListItem,BlogViewHolder> firebaseRecyclerAdapter=new
+        final FirebaseRecyclerAdapter<ListItem,BlogViewHolder> firebaseRecyclerAdapter=new
                 FirebaseRecyclerAdapter<ListItem, BlogViewHolder>(ListItem.class,R.layout.row_layout,BlogViewHolder.class,myRef)
                 {
 
                     @Override
-                    protected void populateViewHolder(BlogViewHolder viewHolder, final ListItem model, int position)
+                    protected void populateViewHolder(final BlogViewHolder viewHolder, final ListItem model, int position)
                     {
                         Log.e("data",""+myRef+""+model.getRecipe_name()+"cooking time"+model.getCooking_time()+""+" prepareation_time"+model.getPreparation_time());
                         viewHolder.setRecipe_name(model.getRecipe_name());
                         viewHolder.setPeople(model.getPeople());
+                       // viewHolder.setOnCreateContextMenuListener(this);
 
-                        viewHolder.setOnClickListener(new BlogViewHolder.ClickListener()
-                        {
+                        viewHolder.setOnClickListener(new BlogViewHolder.ClickListener() {
+
                             @Override
-                            public void onItemClick(View view, int position)
-                            {
-                                String value="Hello world";
-                                Intent i = new Intent(getActivity(),DetailsActivity.class);
-                                i.putExtra("key",model.getCooking_time());
-                                i.putExtra("recipename",model.getRecipe_name());
-                                i.putExtra("person",model.getPeople());
-                                i.putExtra("ingredients",model.getIngredients());
-                                i.putExtra("preparation",model.getPreparation_steps());
-                                i.putExtra("preparationtime",model.getPreparation_time());
+                            public void onItemClick(View view, int position) {
+                                String value = "Hello world";
+                                Intent i = new Intent(getActivity( ), DetailsActivity.class);
+                                i.putExtra("key", model.getCooking_time( ));
+                                i.putExtra("recipename", model.getRecipe_name( ));
+                                i.putExtra("person", model.getPeople( ));
+                                i.putExtra("ingredients", model.getIngredients( ));
+                                i.putExtra("preparation", model.getPreparation_steps( ));
+                                i.putExtra("preparationtime", model.getPreparation_time( ));
                                 startActivity(i);
 
                             }
 
+
                             @Override
                             public void onItemLongClick(View view, int position) {
+                               registerForContextMenu(view);
+                                deleteRecipe( );
+                                // myRef.child(model.getRecipe_name()).removeValue();
+
+                            }
+
+
+
+                            private void deleteRecipe() {
                                 myRef.child(model.getRecipe_name()).removeValue();
 
                             }
+
                         });
-
-
-
                     }
 
-
                 };
-
-
 
         recyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
-    public static class BlogViewHolder extends RecyclerView.ViewHolder
+
+        public static class BlogViewHolder extends RecyclerView.ViewHolder
     {
         View mView;
         ImageButton mImageButton;
         private BlogViewHolder.ClickListener mClickListener;
+
 
         //Interface to send callbacks...
         public interface ClickListener{

@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class URLEntry extends AppCompatActivity {
-    EditText edt_url,edt_recipe;
+    EditText edt_url,edt_urlrecipe;
     Button btn_url;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("url");
@@ -37,7 +37,7 @@ public class URLEntry extends AppCompatActivity {
         setContentView(R.layout.activity_urlentry);
 
         edt_url=(EditText)findViewById(R.id.edt_url);
-        edt_recipe=(EditText)findViewById(R.id.edt_recipe);
+        edt_urlrecipe=(EditText)findViewById(R.id.edt_urlrecipe);
         btn_url=(Button)findViewById(R.id.btn_url);
 
         btn_url.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class URLEntry extends AppCompatActivity {
     private void onSubmit()
     {
         url=edt_url.getText().toString();
-        url_recipe=edt_recipe.getText().toString();
+        url_recipe=edt_urlrecipe.getText().toString();
 
         myRef.child(url_recipe).addValueEventListener(new ValueEventListener() {
             @Override

@@ -7,6 +7,7 @@ package com.example.m10ga.myrecipejournal.Model;
 public class ListItem {
 
     private String url;
+   // private String url_recipe;
     private String recipe_name;
     private String preparation_time;
     private String cooking_time;
@@ -30,11 +31,20 @@ public class ListItem {
         this.people = people;
     }
 
+  //  public String getUrl_recipe() {
+   //     return url_recipe;
+   // }
+
+   // public void setUrl_recipe(String url_recipe) {
+    //    this.url_recipe = url_recipe;
+   // }
+
     private String people;
 
     public ListItem(){}
     public ListItem(String url, String cooking_time, String recipename, String preparation_time, String people_served){
         this.url = url;
+      //  this.url_recipe = url_recipe;
         this.cooking_time = cooking_time;
 //        this.recipename = recipename;
         this.preparation_time = preparation_time;
