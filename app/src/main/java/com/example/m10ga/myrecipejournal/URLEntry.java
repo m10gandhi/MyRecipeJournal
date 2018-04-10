@@ -4,6 +4,7 @@ package com.example.m10ga.myrecipejournal;
  * Created by m10ga on 2018-04-04.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class URLEntry extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
                     Map<String, String> map = new LinkedHashMap<>();
-                    map.put("url_recipe:",url_recipe);
+                    map.put("url_recipe",url_recipe);
                     map.put("url", url);
 
 //                    map.put("url",url);
@@ -89,5 +90,8 @@ public class URLEntry extends AppCompatActivity {
 
             }
         });
+        Intent in=new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(in);
     }
+
 }

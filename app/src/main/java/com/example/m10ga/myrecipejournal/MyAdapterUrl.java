@@ -15,13 +15,13 @@ import java.util.List;
  * Created by m10ga on 2018-04-08.
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
+public class MyAdapterUrl extends RecyclerView.Adapter <MyAdapterUrl.ViewHolder>
 {
     private List<ListItem> listItems;
 
     private Context ctx;
 
-    public MyAdapter(List<ListItem> listItem, Context ctx)
+    public MyAdapterUrl(List<ListItem> listItem, Context ctx)
     {
         this.listItems = listItem;
         this.ctx = ctx;
@@ -31,16 +31,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_layout,parent,false);
+                .inflate(R.layout.row_layout_url,parent,false);
         return new ViewHolder(v);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        TextView tv_recipe;
-        TextView tv_people;
-        //   TextView tv_url;
-        //  TextView tv_url_recipe;
+       // TextView tv_recipe;
+       // TextView tv_people;
+         TextView tv_url;
+        TextView tv_url_recipe;
 
 
 
@@ -48,10 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         {
             super(itemView);
 
-            tv_recipe=(TextView)itemView.findViewById(R.id.tv_recipe);
-            tv_people=(TextView)itemView.findViewById(R.id.tv_people);
-            //   tv_url=(TextView)itemView.findViewById(R.id.tv_url);
-            //   tv_url_recipe=(TextView)itemView.findViewById(R.id.tv_url_recipe);
+        //    tv_recipe=(TextView)itemView.findViewById(R.id.tv_recipe);
+          //  tv_people=(TextView)itemView.findViewById(R.id.tv_people);
+               tv_url=(TextView)itemView.findViewById(R.id.tv_url);
+               tv_url_recipe=(TextView)itemView.findViewById(R.id.tv_url_recipe);
 
         }
 
@@ -67,10 +67,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
     {
         final ListItem listItem=listItems.get(position);
 
-        holder.tv_recipe.setText(listItem.getRecipe_name());
-        holder.tv_people.setText(listItem.getPeople());
-      //  holder.tv_url.setText(listItem.getUrl());
-       // holder.tv_url_recipe.setText(listItem.getUrl_recipe());
+     //   holder.tv_recipe.setText(listItem.getRecipe_name());
+      //  holder.tv_people.setText(listItem.getPeople());
+          holder.tv_url.setText(listItem.getUrl());
+         holder.tv_url_recipe.setText(listItem.getUrl_recipe());
 
 
     }

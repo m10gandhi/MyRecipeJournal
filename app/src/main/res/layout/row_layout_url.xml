@@ -20,7 +20,7 @@
 
 
         <ImageButton
-            android:id="@+id/img"
+            android:id="@+id/img1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="285dp"
@@ -37,7 +37,7 @@
             app:srcCompat="@drawable/common" />
 
         <TextView
-            android:id="@+id/tv_recipe"
+            android:id="@+id/tv_url_recipe"
             android:layout_width="349dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -80,7 +80,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_url_recipe"
+                android:id="@+id/tv_url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

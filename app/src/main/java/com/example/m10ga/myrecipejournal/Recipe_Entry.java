@@ -145,22 +145,22 @@ public class Recipe_Entry extends AppCompatActivity {
             }
         });
 
-        seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+ //       seekbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+  //          @Override
+   //         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//
+  //          }
 
-            }
+    //        @Override
+      //      public void onStartTrackingTouch(SeekBar seekBar) {
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+        //    }
 
-            }
+          //  @Override
+           // public void onStopTrackingTouch(SeekBar seekBar) {
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+         //   }
+       // });
 
         edt_prepTime.setOnClickListener(new View.OnClickListener() {
 

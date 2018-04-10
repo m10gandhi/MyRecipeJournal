@@ -30,6 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".URLEntry" />
         <activity android:name=".DetailsActivity"></activity>
+        <activity android:name="DetailUrlActivity"></activity>
     </application>
 
 </manifest>

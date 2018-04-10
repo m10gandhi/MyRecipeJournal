@@ -26,12 +26,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.example.m10ga.myrecipejournal.Model.ListItem;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Recent extends Fragment {
     private RecyclerView recyclerView;
@@ -84,17 +88,6 @@ public class Recent extends Fragment {
         myRef.keepSynced(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        listItems=new ArrayList<>();
-//
-//        for(int i=0;i<=10;i++)
-//        {
-//            ListItem listItem=new ListItem("pizza ","4");
-//            listItems.add(listItem);
-//        }
-//
-//        adapter=new MyAdapter(listItems,getActivity());
-//        recyclerView.setAdapter(adapter);
-
         return v;
     }
 
@@ -131,20 +124,9 @@ public class Recent extends Fragment {
                                 startActivity(i);
 
                             }
-
-
                             @Override
                             public void onItemLongClick(View view, int position) {
-                               registerForContextMenu(view);
-                                deleteRecipe( );
-                                // myRef.child(model.getRecipe_name()).removeValue();
-
-                            }
-
-
-
-                            private void deleteRecipe() {
-                                myRef.child(model.getRecipe_name()).removeValue();
+                                 myRef.child(model.getRecipe_name()).removeValue();
 
                             }
 
@@ -160,6 +142,8 @@ public class Recent extends Fragment {
         public static class BlogViewHolder extends RecyclerView.ViewHolder
     {
         View mView;
+        Context mContext;
+        DatabaseReference myRef;
         ImageButton mImageButton;
         private BlogViewHolder.ClickListener mClickListener;
 
@@ -177,6 +161,8 @@ public class Recent extends Fragment {
         {
             super(itemView);
             mView=itemView;
+            mImageButton=(ImageButton)itemView.findViewById(R.id.img);
+            myRef=FirebaseDatabase.getInstance().getReference().child("recipe");
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -203,6 +189,22 @@ public class Recent extends Fragment {
             TextView tv_people=(TextView)mView.findViewById(R.id.tv_people);
             tv_people.setText(people);
         }
+
+        public void setDelBtn(final String postDel){
+            myRef.addValueEventListener(new ValueEventListener( ) {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    dataSnapshot.child(postDel).hasChild(myRef.child());
+                    Log.e("heelll","   "+dataSnapshot.child(postDel));
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
 
     }
 
