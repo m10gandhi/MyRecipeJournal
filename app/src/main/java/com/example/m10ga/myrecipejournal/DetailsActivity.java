@@ -27,8 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tv_ingredients;
     TextView tv_prepartion;
     TextView tv_preparationtime;
-   // ImageButton ib;
-    //EditText ed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,37 +54,9 @@ public class DetailsActivity extends AppCompatActivity {
         tv_ingredients.setText(ingredients);
         tv_prepartion.setText(preparation);
         tv_preparationtime.setText(preparationtime+" "+"minutes");
-     //   ib = (ImageButton)findViewById(R.id.imageButton);
-      //  ed = (EditText)findViewById(R.id.update1);
 
-//        ed.setVisibility(View.GONE);
-
-  //      ib.setOnClickListener(new View.OnClickListener( ) {
-    //       @Override
-      //      public void onClick(View view) {
-        //        ed.setVisibility(View.VISIBLE);
-      //      }
-       // });
     }
 
 
-    /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater me = getMenuInflater();
-        me.inflate(R.menu.menu_delete,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int i= item.getItemId();
-        if (i == R.id.Delete) {
-            myRef.child(model.getRecipe_name()).removeValue();
-
-            Intent in=new Intent(getApplicationContext(),Recent.class);
-            startActivity(in);
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 }
+//[1][2][5]

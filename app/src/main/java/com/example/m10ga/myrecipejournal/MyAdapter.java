@@ -42,9 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         TextView tv_recipe;
         TextView tv_people;
         TextView tv_rating;
-//        ImageButton img;
-        //   TextView tv_url;
-        //  TextView tv_url_recipe;
+
 
 
 
@@ -55,16 +53,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
             tv_recipe=(TextView)itemView.findViewById(R.id.tv_recipe);
             tv_people=(TextView)itemView.findViewById(R.id.tv_people);
             tv_rating=(TextView)itemView.findViewById(R.id.tv_rating);
-//            img=(ImageButton)itemView.findViewById(R.id.img);
-            //   tv_url=(TextView)itemView.findViewById(R.id.tv_url);
-            //   tv_url_recipe=(TextView)itemView.findViewById(R.id.tv_url_recipe);
-
-//            img.setOnClickListener(new View.OnClickListener( ) {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(itemView.getContext(),"Press Long to Delete the Item",Toast.LENGTH_LONG).show();
-//                }
-//            });
 
         }
 
@@ -83,8 +71,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         holder.tv_recipe.setText(listItem.getRecipe_name());
         holder.tv_people.setText(listItem.getPeople());
         holder.tv_rating.setText(listItem.getRating());
-      //  holder.tv_url.setText(listItem.getUrl());
-       // holder.tv_url_recipe.setText(listItem.getUrl_recipe());
 
 
     }
@@ -95,3 +81,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
         return listItems.size();
     }
 }
+//[1][2][5]

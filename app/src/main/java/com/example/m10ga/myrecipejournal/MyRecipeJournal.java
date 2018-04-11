@@ -14,5 +14,6 @@ public class MyRecipeJournal extends Application {
     public void onCreate() {
         super.onCreate( );
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        //[16]
     }
 }

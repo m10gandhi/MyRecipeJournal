@@ -57,9 +57,9 @@ public class ListItem {
         this.url = url;
         this.url_recipe = url_recipe;
         this.cooking_time = cooking_time;
-//        this.recipename = recipename;
+
         this.preparation_time = preparation_time;
-//        this.people_served = people_served;
+
         this.rating=rating;
 
     }
@@ -99,3 +99,4 @@ public class ListItem {
     public void setRating(String rating){this.rating=rating;}
 
 }
+//[1][2][5][4][3][10]

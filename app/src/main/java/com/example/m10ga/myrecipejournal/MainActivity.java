@@ -283,3 +283,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 }
+
+//[8][9][7][20]
+//[3][12]

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
+        android:name=".MyRecipeJournal"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -13,8 +14,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".MyRecipeJournal">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -30,8 +30,8 @@
             android:label="@string/title_activity_recipe__entry"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".URLEntry" />
-        <activity android:name=".DetailsActivity"></activity>
-        <activity android:name="DetailUrlActivity"></activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".DetailUrlActivity" />
     </application>
 
 </manifest>

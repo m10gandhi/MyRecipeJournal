@@ -40,9 +40,6 @@ import com.google.firebase.database.ValueEventListener;
 public class Recent extends Fragment {
     private RecyclerView recyclerView;
 
-    ImageButton img;
-    //    private RecyclerView.Adapter adapter;
-//    private List<ListItem>listItems;
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference myRef=database.getReference().child("recipe");
 
@@ -50,7 +47,7 @@ public class Recent extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -84,10 +81,10 @@ public class Recent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
+
         View v=inflater.inflate(R.layout.fragment_recent, container, false);
         recyclerView=(RecyclerView)v.findViewById(R.id.recyclerview);
-      //  img=(ImageButton)v.findViewById(R.id.img);
+
         myRef.keepSynced(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -133,10 +130,53 @@ public class Recent extends Fragment {
                             }
                             @Override
                             public void onItemLongClick(View view, int position) {
-                                 myRef.child(model.getRecipe_name()).removeValue();
 
+                                 AlertDialog.Builder mBuilder=new AlertDialog.Builder(getContext());
+                                View mView=getLayoutInflater().inflate(R.layout.dialog_box,null);
+                                mBuilder.setTitle("Update your recipe");
+                                Button btn_drop=(Button)mView.findViewById(R.id.btn_drop);
+                                Button btn_open=(Button)mView.findViewById(R.id.btn_open);
+//[14][12]
+                                btn_drop.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        myRef.child(model.getRecipe_name()).removeValue();
+                                        Toast.makeText(getContext(),"Recipe Dropped !!!",Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+
+                                btn_open.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        android.support.v7.app.AlertDialog.Builder mBuilder=new android.support.v7.app.AlertDialog.Builder(getContext());
+                                        View mView=getLayoutInflater().inflate(R.layout.dialog_box2,null);
+                                        mBuilder.setTitle("Update your recipe");
+                                        mBuilder.setMessage("By clicking on confirm, your previous data of this recipe will be changed entirely. Press back to go to Homepage");
+                                        Button btn_confirm=(Button)mView.findViewById(R.id.btn_confirm);
+
+
+                                        btn_confirm.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v)
+                                            {
+                                                myRef.child(model.getRecipe_name()).removeValue();
+                                                Toast.makeText(getContext(),"Recipe Dropped !!!",Toast.LENGTH_LONG).show();
+                                                Intent i=new Intent(getContext(),Recipe_Entry.class);
+                                                startActivity(i);
+                                            }
+                                        });
+
+                                        mBuilder.setView(mView);
+                                        android.support.v7.app.AlertDialog dialog=mBuilder.create();
+                                        dialog.show();
+                                    }
+                                });
+                                mBuilder.setView(mView);
+                                AlertDialog dialog=mBuilder.create();
+                                dialog.show();
                             }
-
+//[14][12]
                         });
                     }
 
@@ -220,7 +260,7 @@ public class Recent extends Fragment {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -239,9 +279,10 @@ public class Recent extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 
 
 }
+//[1][2][3][4][5][10]
